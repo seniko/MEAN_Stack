@@ -1,7 +1,12 @@
 <div class="form-container text-center">
 
-  <form #f="ngForm" (ngSubmit)="submit(f)" class="register">
-
+  <form #f="ngForm" (ngSubmit)="onSubmit()" class="register">
+    <div class="alert alert-success" *ngIf="isRegistered">
+        Registered
+    </div>
+    <div class="alert alert-danger" *ngIf="isRegisteredFailed">
+        Something went wrong
+    </div>
       <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
       <div ngModelGroup="contact" #contact="ngModelGroup">
           <div class="form-group">
@@ -15,7 +20,7 @@
                 id="name" 
                 type="text" 
                 placeholder="Name"
-                class="form-control">
+                class="form-control" [(ngModel)]="nameVal">
 
               <div class="alert alert-danger" *ngIf="!name.valid && name.touched">
                 <div *ngIf="name.errors.required">
@@ -30,7 +35,7 @@
           
           <div class="form-group">
               <label for="inputEmail">Email</label>
-              <input type="email" id="inputEmail" name="email" ngModel #email="ngModel" class="form-control" placeholder="Email address" email required>
+              <input type="email" id="inputEmail" name="email" ngModel #email="ngModel" class="form-control" placeholder="Email address" email required [(ngModel)]="emailVal">
               
               <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
                   Email is required
@@ -40,7 +45,7 @@
 
           <div class="form-group">
               <label for="inputPassword">Пароль</label>
-              <input type="password" id="inputPassword" name="password" ngModel #password="ngModel" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$" class="form-control" required>
+              <input type="password" id="inputPassword" name="password" ngModel #password="ngModel" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$" class="form-control" required [(ngModel)]="passwordVal">
               
               <div class="alert alert-danger" *ngIf="!password.valid && password.touched">
                   <div *ngIf="password.errors.required">
@@ -55,10 +60,11 @@
       </div>
       
       
-      <p style="display: none">
+      <p >
       {{f.value | json}}
       </p>
-      <button class="btn btn-primary" [disabled]="!f.valid" routerLink="/dashboard">Submit</button>
+    
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
     </form>
 
   </div>

@@ -14,6 +14,8 @@ import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,7 @@ import { FormsModule } from '@angular/forms';
     ]),
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
