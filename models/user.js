@@ -44,9 +44,17 @@ function getUserById(id, callback) {
 //     User.findOne(query, callback);
 // }
 
-function validateUser(user) {
+function validateUserRegister(user) {
     const schema = {
         name: Joi.string().min(3).max(30).required(),
+        email: Joi.string().min(3).max(255).email().required(),
+        password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$/).required()
+    };
+    return Joi.validate(user, schema);
+}
+
+function validateUserLogin(user) {
+    const schema = {
         email: Joi.string().min(3).max(255).email().required(),
         password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$/).required()
     };
@@ -56,4 +64,5 @@ function validateUser(user) {
 exports.User = User;
 exports.getUserById = getUserById;
 // exports.getUserByUsername = getUserByUsername;
-exports.validate = validateUser;
+exports.validateRegister = validateUserRegister;
+exports.validateLogin = validateUserLogin;

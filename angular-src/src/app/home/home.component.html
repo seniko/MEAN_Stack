@@ -1,7 +1,7 @@
 <div class="jumbotron text-center mt-4">
   <h2>MEAN Stack application</h2>
   <p class="lead">Welcome to authentication application</p>
-  <div>
+  <div *ngIf="!authService.loggedIn()">
     <a routerLink="/register" class="btn btn-primary">Register</a>
     <a routerLink="/login" class="btn btn-default">Login</a>
   </div>

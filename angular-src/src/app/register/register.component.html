@@ -1,13 +1,8 @@
 <div class="form-container text-center">
 
   <form #f="ngForm" (ngSubmit)="onSubmit()" class="register">
-    <div class="alert alert-success" *ngIf="isRegistered">
-        Registered
-    </div>
-    <div class="alert alert-danger" *ngIf="isRegisteredFailed">
-        Something went wrong
-    </div>
-      <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+    
+      <h1 class="h3 mb-5 font-weight-normal">Регистрация</h1>
       <div ngModelGroup="contact" #contact="ngModelGroup">
           <div class="form-group">
               <label for="firstName">Имя</label>
@@ -58,12 +53,7 @@
                 
           </div>
       </div>
-      
-      
-      <p >
-      {{f.value | json}}
-      </p>
-    
+
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
     </form>
 

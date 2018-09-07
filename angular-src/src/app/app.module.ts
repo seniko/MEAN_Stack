@@ -13,9 +13,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AuthService } from './services/auth.service';
-
+import { AuthGuard } from './gurards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -45,16 +46,20 @@ import { AuthService } from './services/auth.service';
       },
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
       }
     ]),
-    FormsModule
+    FormsModule,
+    FlashMessagesModule.forRoot(),
+    
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
