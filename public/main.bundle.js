@@ -361,11 +361,11 @@ var LoginComponent = /** @class */ (function () {
         this.authService.authenticateUser(user).subscribe(function (data) {
             if (data.success) {
                 _this.authService.storeUserData(data.token, data.user);
-                _this._flashMessagesService.show('Logged in.', { cssClass: 'alert-success alert-container container flashfade', timeout: 6000 });
+                _this._flashMessagesService.show('Logged in.', { cssClass: 'alert-success alert-container container flashfade', timeout: 5000 });
                 _this.router.navigate(['/dashboard']);
             }
         }, function (err) {
-            _this._flashMessagesService.show('Invalid email or password.', { cssClass: 'alert-danger alert-container container flashfade', timeout: 6000 });
+            _this._flashMessagesService.show('Invalid email or password.', { cssClass: 'alert-danger alert-container container flashfade', timeout: 5000 });
             _this.router.navigate(['/login']);
         });
     };
@@ -433,7 +433,7 @@ var NavbarComponent = /** @class */ (function () {
     };
     NavbarComponent.prototype.onLogout = function () {
         this.authService.logout();
-        this._flashMessagesService.show('Logged out.', { cssClass: 'alert-success alert-container container flashfade', timeout: 6000 });
+        this._flashMessagesService.show('Logged out.', { cssClass: 'alert-success alert-container container flashfade', timeout: 5000 });
         this.router.navigate(['/login']);
         return false;
     };
@@ -570,11 +570,11 @@ var RegisterComponent = /** @class */ (function () {
         };
         this.authService.registerUser(user).subscribe(function (data) {
             if (data.success) {
-                _this._flashMessagesService.show('Registered! Log in.', { cssClass: 'alert-success alert-container container flashfade', timeout: 6000 });
+                _this._flashMessagesService.show('Registered! Log in.', { cssClass: 'alert-success alert-container container flashfade', timeout: 5000 });
                 _this.router.navigate(['/login']);
             }
         }, function (err) {
-            _this._flashMessagesService.show('Something went wrong.', { cssClass: 'alert-danger alert-container container flashfade', timeout: 6000 });
+            _this._flashMessagesService.show('Something went wrong.', { cssClass: 'alert-danger alert-container container flashfade', timeout: 5000 });
             _this.router.navigate(['/register']);
         });
     };

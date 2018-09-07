@@ -3,7 +3,7 @@ webpackJsonp(["styles"],{
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n.alert-container {\n    position: absolute;\n}\n@Keyframes flashfade {\n    0% {opacity:0}\n    20% {opacity:1}\n    80% {opacity:1}\n    100% {opacity:0}\n}\n.flashfade {\n    -webkit-animation-name: flashfade;\n            animation-name: flashfade;\n    -webkit-animation-duration: 6s;\n            animation-duration: 6s;\n    display: block;\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n.alert-container {\n    position: absolute;\n}\n@Keyframes flashfade {\n    0% {opacity:0}\n    20% {opacity:1}\n    80% {opacity:1}\n    100% {opacity:0}\n}\n.flashfade {\n    -webkit-animation-name: flashfade;\n            animation-name: flashfade;\n    -webkit-animation-duration: 5s;\n            animation-duration: 5s;\n    display: block;\n}"
 
 /***/ }),
 
