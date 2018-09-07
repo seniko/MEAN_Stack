@@ -9,8 +9,9 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isMobileBtnClicked: boolean;
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
     private _flashMessagesService: FlashMessagesService, 
     private router: Router) { }
 
@@ -22,5 +23,9 @@ export class NavbarComponent implements OnInit {
     this._flashMessagesService.show('Logged out.', {cssClass: 'alert-success alert-container container flashfade', timeout: 5000});
     this.router.navigate(['/login']);
     return false;
+  }
+
+  onClick() {
+    this.isMobileBtnClicked = !this.isMobileBtnClicked;
   }
 }

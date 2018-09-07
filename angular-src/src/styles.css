@@ -3,15 +3,15 @@
     position: absolute;
 }
 
-@Keyframes flashfade {
-    0% {opacity:0}
-    20% {opacity:1}
-    80% {opacity:1}
-    100% {opacity:0}
-}
-
 .flashfade {
     animation-name: flashfade;
     animation-duration: 5s;
     display: block;
+}
+
+@keyframes flashfade {
+    0% {opacity:0}
+    20% {opacity:1}
+    80% {opacity:1}
+    100% {opacity:0}
 }
