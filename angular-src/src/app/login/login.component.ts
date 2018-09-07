@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe( data => {
       if (data.success) {
         this.authService.storeUserData(data.token, data.user);
-        this._flashMessagesService.show('Logged in.', {cssClass: 'alert-success alert-container container flashfade', timeout: 6000});
+        this._flashMessagesService.show('Logged in.', {cssClass: 'alert-success alert-container container flashfade', timeout: 5000});
         this.router.navigate(['/dashboard']);
       }
     }, err => {
-      this._flashMessagesService.show('Invalid email or password.', {cssClass: 'alert-danger alert-container container flashfade', timeout: 6000});
+      this._flashMessagesService.show('Invalid email or password.', {cssClass: 'alert-danger alert-container container flashfade', timeout: 5000});
       this.router.navigate(['/login']); 
     });
   }

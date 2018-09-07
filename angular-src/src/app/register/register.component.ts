@@ -27,11 +27,11 @@ export class RegisterComponent implements OnInit {
     
     this.authService.registerUser(user).subscribe(data => {
       if (data.success) {
-        this._flashMessagesService.show('Registered! Log in.', {cssClass: 'alert-success alert-container container flashfade', timeout: 6000});
+        this._flashMessagesService.show('Registered! Log in.', {cssClass: 'alert-success alert-container container flashfade', timeout: 5000});
         this.router.navigate(['/login']);
       }
     }, err => {
-      this._flashMessagesService.show('Something went wrong.', {cssClass: 'alert-danger alert-container container flashfade', timeout: 6000});
+      this._flashMessagesService.show('Something went wrong.', {cssClass: 'alert-danger alert-container container flashfade', timeout: 5000});
       this.router.navigate(['/register']);
     });
   }

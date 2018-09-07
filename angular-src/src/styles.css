@@ -12,6 +12,6 @@
 
 .flashfade {
     animation-name: flashfade;
-    animation-duration: 6s;
+    animation-duration: 5s;
     display: block;
 }
