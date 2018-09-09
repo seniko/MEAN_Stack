@@ -12,6 +12,10 @@
         </li>
       </ul>
       <ul class="navbar-nav">
+        <li *ngIf="authService.loggedIn() && authService.isAdmin()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="/users">Users</a>
+        </li>
+        
         <li *ngIf="authService.loggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
         </li>

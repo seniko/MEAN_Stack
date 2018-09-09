@@ -3,6 +3,7 @@ const router = express.Router();
 const {User, validateRegister, validateLogin} = require('../models/user');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const admin = require('../middleware/admin');
 
 router.post('/register', async (req, res) => {
     const {error} = validateRegister(req.body); 
@@ -41,13 +42,19 @@ router.post('/authenticate', async (req, res) => {
         user: {
             id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin
         }
     });
 });
 
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     res.json({user: req.user});
+});
+
+router.get('/list', passport.authenticate('jwt', {session: false}), [admin], async (req, res) => {
+    const users = await User.find().select('-password').sort('name');
+    res.send(users);
 });
 
 module.exports = router;

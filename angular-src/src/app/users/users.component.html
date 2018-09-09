@@ -1,0 +1,20 @@
+<h2 class="page-header">Users list</h2>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{ user._id }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

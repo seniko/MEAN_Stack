@@ -18,6 +18,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './gurards/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
       {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
         canActivate: [AuthGuard]
       },
       {
