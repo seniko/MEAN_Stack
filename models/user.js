@@ -2,18 +2,19 @@ const mongoose = require('mongoose');
 const config = require('config');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
+const {Message} = require('./message');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minlength: 3,
+        minlength: 2,
         maxlength: 50
     },
     email: {
         type: String,
         required: true,
-        minlength: 3,
+        minlength: 5,
         maxlength: 255,
         unique: true
     },
@@ -23,6 +24,10 @@ const userSchema = new mongoose.Schema({
         minlength: 4,
         maxlength: 1024
     },
+    message: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message'
+    }],
     isAdmin: Boolean
 });
 
@@ -46,8 +51,8 @@ function getUserById(id, callback) {
 
 function validateUserRegister(user) {
     const schema = {
-        name: Joi.string().min(3).max(30).required(),
-        email: Joi.string().min(3).max(255).email().required(),
+        name: Joi.string().min(2).max(30).required(),
+        email: Joi.string().min(5).max(255).email().required(),
         password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$/).required()
     };
     return Joi.validate(user, schema);
@@ -55,7 +60,7 @@ function validateUserRegister(user) {
 
 function validateUserLogin(user) {
     const schema = {
-        email: Joi.string().min(3).max(255).email().required(),
+        email: Joi.string().min(5).max(255).email().required(),
         password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,}$/).required()
     };
     return Joi.validate(user, schema);

@@ -16,9 +16,12 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AuthService } from './services/auth.service';
+import { MessagesService } from './services/messages.service';
 import { AuthGuard } from './gurards/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UsersComponent } from './users/users.component';
+import { ContactComponent } from './contact/contact.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { UsersComponent } from './users/users.component';
     DashboardComponent,
     ProfileComponent,
     NotFoundComponent,
-    UsersComponent
+    UsersComponent,
+    ContactComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,15 @@ import { UsersComponent } from './users/users.component';
         canActivate: [AuthGuard]
       },
       {
+        path: 'contact',
+        component: ContactComponent
+      },
+      {
+        path: 'messages',
+        component: MessagesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: '**', 
         component: NotFoundComponent
       }
@@ -72,7 +86,7 @@ import { UsersComponent } from './users/users.component';
     FlashMessagesModule.forRoot(),
     
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, MessagesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

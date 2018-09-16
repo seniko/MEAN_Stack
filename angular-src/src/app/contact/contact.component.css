@@ -1,0 +1,15 @@
+.form-container {
+    max-width: 600px;
+}
+
+.form-text {
+    margin-left: 2.8rem;
+}
+
+.btn {
+    margin-left: 2.8rem;
+}
+
+.alert {
+    margin-bottom: 0;
+}

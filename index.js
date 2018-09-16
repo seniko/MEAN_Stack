@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 const users = require('./routes/users');
+const messages = require('./routes/messages');
 
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/users', users);
+app.use('/contact', messages);
 
 require('./startup/db')();
 require('./middleware/passport')(passport);

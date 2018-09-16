@@ -1,0 +1,58 @@
+<h2 class="page-header mb-5">Contact us</h2>
+
+<div class="form-container">
+  <form ngForm #form="ngForm" (ngSubmit)="onSubmit(form)">
+  
+    <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-user"></i></div>
+          </div>
+          <input type="text" class="form-control" ngModel name="name" #name="ngModel" placeholder="Name" required minlength="2" maxlength="50" [(ngModel)]="nameVal">
+        </div>
+        <div class="alert alert-danger" *ngIf="!name.valid && name.touched">
+            <div *ngIf="name.errors.required">
+              Name is required
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name should be minimum {{name.errors.minlength.requiredLength}} characters
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+            </div>
+        <input type="text" class="form-control" ngModel name="email" #email="ngModel" placeholder="Email" required email [(ngModel)]="emailVal">
+        </div>
+        <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
+            Email is required
+        </div>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+       
+    </div>
+  
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-comment"></i></div>
+            </div>
+        <textarea class="form-control" ngModel name="message" #message="ngModel" rows="3" placeholder="Your message" required minlength="30" maxlength="3000" [(ngModel)]="messageVal"></textarea>
+      </div>
+      <div class="alert alert-danger" *ngIf="!message.valid && message.touched">
+          <div *ngIf="message.errors.required">
+            Message is required
+          </div>
+          <div *ngIf="message.errors.minlength">
+            Message should be minimum {{message.errors.minlength.requiredLength}} characters
+          </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+  
+  </form>
+</div>

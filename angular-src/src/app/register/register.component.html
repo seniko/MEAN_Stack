@@ -1,6 +1,6 @@
 <div class="form-container text-center">
 
-  <form #f="ngForm" (ngSubmit)="onSubmit()" class="register">
+  <form ngForm #f="ngForm" (ngSubmit)="onSubmit()" class="register">
     
       <h1 class="h3 mb-5 font-weight-normal">Регистрация</h1>
       <div ngModelGroup="contact" #contact="ngModelGroup">
@@ -8,7 +8,7 @@
               <label for="firstName">Имя</label>
               <input 
                 required 
-                minlength="3" 
+                minlength="2" 
                 ngModel 
                 name="name" 
                 #name="ngModel" 

@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt);
 
     await user.save();
-    res.status(200).send({success: true, msg: 'User registered.'});
+    res.status(200).json({success: true, msg: 'User registered.'});
 });
 
 router.post('/authenticate', async (req, res) => {
