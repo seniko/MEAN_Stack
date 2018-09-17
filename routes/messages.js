@@ -42,7 +42,17 @@ router.get('/messages', passport.authenticate('jwt', {session: false}), [admin],
 
 
 router.delete('/messages/:id', passport.authenticate('jwt', {session: false}), [admin], async (req, res) => {
-    const message = await Message.findByIdAndRemove(req.params.id);
+    let message = await Message.findById(req.params.id);
+
+
+    let user = await User.findOne({email: message.email});
+    if (user) {
+        await User.update(
+            { email: message.email }, 
+            { $pull: { message: req.params.id }});
+    }
+    
+    message = await Message.findByIdAndRemove(req.params.id);
     if (!message) return res.status(404).json({success: false, msg: "Message not found."});
     res.status(200).json({success: true, msg: "Message removed."})
 });
