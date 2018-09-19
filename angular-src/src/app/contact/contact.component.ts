@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
      private authService: AuthService) { }
 
   ngOnInit() {
-    if (this.authService.loggedIn) {
+    if (this.authService.loggedIn()) {
       const user = JSON.parse(localStorage.getItem('user'));
       this.nameVal = user.name;
       this.emailVal = user.email;
